@@ -8,15 +8,28 @@ namespace HazardousAsteroidsApi.Controllers;
 
 [Route("[controller]")]
 [ApiController]
+[Produces("application/json")]
 public class AsteroidsController : ControllerBase
 {
-    private readonly ILogger<AsteroidsController> _logger;
+    private readonly INeoService _service;
 
-    public AsteroidsController(ILogger<AsteroidsController> logger)
+    public AsteroidsController(INeoService service)
     {
-        _logger = logger;
+        _service = service;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="planet">The name of the planet that the asteroids are oribing</param>
+    /// <param name="startDate">The first date used to filter the results. Being the date where the asteroids are in closest range to the planet</param>
+    /// <param name="endDate">The last date included in the filter</param>
+    /// <param name="pageSize">Number of items per page</param>
+    /// <param name="pageIndex">The zero-based page index</param>
+    /// <returns>A paginated list of hazardous asteroids</returns>
+    /// 
+    /// <response code="200">Returns a paginated list of Asteroid objects</response>
+    /// <response code="400">If parameter `planet` is not provided</response>
     [HttpGet]
     [ProducesResponseType(typeof(PaginatedItemsViewModel<Asteroid>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -33,7 +46,7 @@ public class AsteroidsController : ControllerBase
         startDate = (startDate == null) ? DateTime.Now : startDate.Value;
         endDate = (endDate == null) ? startDate.Value.AddDays(7) : endDate.Value;
 
-        var items = (await NeoService.GetAsync(startDate.Value, endDate.Value)).ToArray();
+        var items = (await _service.GetAsync(startDate.Value, endDate.Value)).ToArray();
 
         // TODO
 
