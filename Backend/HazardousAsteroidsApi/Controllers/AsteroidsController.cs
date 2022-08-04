@@ -45,11 +45,22 @@ public class AsteroidsController : ControllerBase
 
         startDate = (startDate == null) ? DateTime.Now : startDate.Value;
         endDate = (endDate == null) ? startDate.Value.AddDays(7) : endDate.Value;
+        var dateSpan = (endDate - startDate).Value.Days;
+        endDate = dateSpan < 0 || dateSpan > 7 ? startDate.Value.AddDays(7) : endDate;
 
         var items = await _service.GetAsync(startDate.Value, endDate.Value);
 
-        // TODO
+        var filteredItems = items == null ? Array.Empty<Asteroid>() : items.ToArray()
+                .Where(n => n.OrbitingBody == planet)
+                .Where(n => n.IsPotentiallyHazardousAsteroid == true)
+                .Select(n => (Asteroid)n)
+                .ToArray();
 
-        return Ok(new PaginatedItemsViewModel<Asteroid>(pageIndex, pageSize, 0, Array.Empty<Asteroid>()));
+        var itemsOnPage = filteredItems
+            .Skip(pageSize * pageIndex)
+            .Take(pageSize)
+            .ToArray();
+
+        return Ok(new PaginatedItemsViewModel<Asteroid>(pageIndex, pageSize, filteredItems.Length, itemsOnPage));
     }
 }
