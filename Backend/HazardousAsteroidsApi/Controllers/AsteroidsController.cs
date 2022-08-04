@@ -46,7 +46,7 @@ public class AsteroidsController : ControllerBase
         startDate = (startDate == null) ? DateTime.Now : startDate.Value;
         endDate = (endDate == null) ? startDate.Value.AddDays(7) : endDate.Value;
 
-        var items = (await _service.GetAsync(startDate.Value, endDate.Value)).ToArray();
+        var items = await _service.GetAsync(startDate.Value, endDate.Value);
 
         // TODO
 
