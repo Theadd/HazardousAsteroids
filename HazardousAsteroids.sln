@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HazardousAsteroidsApi", "Ba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HazardousAsteroidsApiTests", "Backend\HazardousAsteroidsApiTests\HazardousAsteroidsApiTests.csproj", "{E9F804DB-E3EB-4D41-8E9A-122AA5AFE7E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HazardousAsteroidsUI", "Frontend\HazardousAsteroidsUI\HazardousAsteroidsUI.csproj", "{6883E7FD-EC6F-4AFC-BFF1-0D5E4DCA9906}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E9F804DB-E3EB-4D41-8E9A-122AA5AFE7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9F804DB-E3EB-4D41-8E9A-122AA5AFE7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9F804DB-E3EB-4D41-8E9A-122AA5AFE7E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6883E7FD-EC6F-4AFC-BFF1-0D5E4DCA9906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6883E7FD-EC6F-4AFC-BFF1-0D5E4DCA9906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6883E7FD-EC6F-4AFC-BFF1-0D5E4DCA9906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6883E7FD-EC6F-4AFC-BFF1-0D5E4DCA9906}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
