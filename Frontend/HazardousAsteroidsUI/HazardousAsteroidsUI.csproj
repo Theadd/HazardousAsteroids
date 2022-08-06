@@ -34,11 +34,13 @@
     <None Remove="client-app\src\components\index.ts" />
     <None Remove="client-app\src\components\SvgIcons.tsx" />
     <None Remove="client-app\src\components\TextInputWithButton.tsx" />
+    <None Remove="client-app\src\lib\api-utils.ts" />
     <None Remove="client-app\src\lib\date-utils.ts" />
     <None Remove="client-app\src\pages\HazardousAsteroidsPage.tsx" />
     <None Remove="client-app\src\pages\HazardousAsteroidsPage\OrbitingBodyTextInput.tsx" />
     <None Remove="client-app\src\pages\HazardousAsteroidsPage\PageFilters.tsx" />
     <None Remove="client-app\src\pages\HazardousAsteroidsPage\types.ts" />
+    <None Remove="client-app\src\stores\AsteroidsApiStore.ts" />
   </ItemGroup>
 
   <ItemGroup>

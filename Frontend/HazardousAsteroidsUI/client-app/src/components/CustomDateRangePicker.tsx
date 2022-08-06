@@ -8,8 +8,12 @@ import { CalendarIconSvg } from '.'
 
 type onChangeCallbackParamsType = [Date, Date]
 
-type DateRangeProps = DateRange & {
-  onChange: (nextValues: DateRange) => void
+type CustomDateRange = DateRange & {
+  startDate: Date
+}
+
+type DateRangeProps = CustomDateRange & {
+  onChange: (nextValues: CustomDateRange) => void
 }
 
 
