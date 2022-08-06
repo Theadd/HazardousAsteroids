@@ -1,3 +1,80 @@
 ﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-datepicker__week > .react-datepicker__day--selected {
+    @apply btn btn-accent btn-xs
+}
+
+div.react-datepicker {
+    @apply bg-base-300 shadow-2xl border-base-300
+}
+
+.react-datepicker__month-container > .react-datepicker__header {
+    @apply bg-base-100 bg-opacity-100
+}
+
+.react-datepicker__header > .react-datepicker__current-month {
+    @apply text-base-content text-opacity-100 cursor-default
+}
+
+.react-datepicker__day-names .react-datepicker__day-name {
+    @apply text-secondary text-opacity-100 hover:text-base-content cursor-default w-12
+}
+
+.react-datepicker__month-container > .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+    border-top-right-radius: 0;
+}
+
+.react-datepicker__month-container > .react-datepicker__header {
+    @apply border-b-black border-opacity-40
+}
+
+.react-datepicker__week > .react-datepicker__day {
+    border-radius: var(--rounded-btn, 0.5rem);
+    @apply btn btn-ghost w-12 h-10 cursor-pointer text-base-content text-sm font-extralight
+}
+
+.react-datepicker__week > .react-datepicker__day:hover {
+    border-radius: var(--rounded-btn, 0.5rem);
+}
+
+.react-datepicker__week > .react-datepicker__day.react-datepicker__day--disabled {
+    @apply btn btn-ghost cursor-default text-secondary-content text-sm font-extralight hover:bg-transparent
+}
+
+.react-datepicker__week > .react-datepicker__day.react-datepicker__day--selected {
+    @apply btn btn-primary text-primary-content
+}
+
+.react-datepicker__week > .react-datepicker__day.react-datepicker__day--in-selecting-range {
+    @apply btn btn-primary text-primary-content bg-opacity-75
+}
+
+.react-datepicker__week > .react-datepicker__day.react-datepicker__day--in-range {
+    @apply btn btn-primary text-primary-content
+}
+
+.react-datepicker__navigation-icon.react-datepicker__navigation-icon--previous {
+    @apply p-0
+}
+
+.react-datepicker__navigation-icon.react-datepicker__navigation-icon--next {
+    @apply p-0
+}
+
+.react-datepicker__navigation.react-datepicker__navigation--previous {
+    @apply pt-2
+}
+
+.react-datepicker__navigation.react-datepicker__navigation--next {
+    @apply pt-2
+}
+
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker > .react-datepicker__triangle::before {
+    @apply border-b-base-300
+}
+
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker > .react-datepicker__triangle::after {
+    @apply border-b-base-100
+}

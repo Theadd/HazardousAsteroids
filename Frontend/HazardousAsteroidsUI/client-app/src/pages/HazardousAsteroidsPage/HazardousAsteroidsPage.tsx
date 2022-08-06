@@ -1,18 +1,8 @@
 ﻿import React from 'react'
 import { addDays } from '../../lib/date-utils'
+import { PageFilters } from './PageFilters'
+import { AsteroidsApiResponse, AsteroidsApiRequest } from './types'
 
-export interface AsteroidsApiResponse {
-  pageIndex: number
-  pageSize: number
-  count: number
-  data: any
-}
-
-export interface AsteroidsApiRequest {
-  startDate: Date
-  endDate: Date
-  planet?: string
-}
 
 type HazardousAsteroidsPageState = AsteroidsApiResponse & AsteroidsApiRequest
 
@@ -32,11 +22,20 @@ export class HazardousAsteroidsPage extends React.Component<{}, HazardousAsteroi
     // TODO
   }
 
+  onFilterChange = (nextValues: AsteroidsApiRequest) => {
+    this.setState({
+      startDate: nextValues.startDate,
+      endDate: nextValues.endDate,
+      planet: nextValues.planet,
+    })
+  }
+
   render() {
+    const { startDate, endDate, planet } = this.state
 
     return (
-      <article className='w-full p-0 sm:p-4 lg:max-w-4xl mx-auto bg-white sm:rounded-xl shadow-lg items-center space-y-4'>
-        HAZARDOUS ASTEROIDS PAGE CONTENT
+      <article className='w-full py-0 px-0 sm:px-4 lg:max-w-4xl mx-auto items-center space-y-4'>
+        <PageFilters startDate={startDate} endDate={endDate} planet={planet} onChange={this.onFilterChange} />
       </article>
     )
   }

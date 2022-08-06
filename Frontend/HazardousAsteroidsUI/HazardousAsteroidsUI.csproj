@@ -15,6 +15,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.4" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +26,31 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="client-app\src\components\CustomDateRangePicker.tsx" />
+    <None Remove="client-app\src\components\DateRangeInput.tsx" />
+    <None Remove="client-app\src\components\index.ts" />
+    <None Remove="client-app\src\components\SvgIcons.tsx" />
+    <None Remove="client-app\src\components\TextInputWithButton.tsx" />
+    <None Remove="client-app\src\lib\date-utils.ts" />
+    <None Remove="client-app\src\pages\HazardousAsteroidsPage.tsx" />
+    <None Remove="client-app\src\pages\HazardousAsteroidsPage\OrbitingBodyTextInput.tsx" />
+    <None Remove="client-app\src\pages\HazardousAsteroidsPage\PageFilters.tsx" />
+    <None Remove="client-app\src\pages\HazardousAsteroidsPage\types.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Remove="client-app\src\components\DateRangeInput.tsx" />
+    <TypeScriptCompile Remove="client-app\src\components\TextInputWithButton.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="client-app\src\components\CustomDateRangePicker.tsx" />
+    <TypeScriptCompile Include="client-app\src\components\index.ts" />
+    <TypeScriptCompile Include="client-app\src\lib\date-utils.ts" />
+    <TypeScriptCompile Include="client-app\src\pages\HazardousAsteroidsPage\HazardousAsteroidsPage.tsx" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
