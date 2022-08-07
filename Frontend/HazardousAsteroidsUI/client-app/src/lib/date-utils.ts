@@ -7,7 +7,7 @@ const dateToYmdString = (d: CanBeReadAsDateTypes): string => asDateType(d).toLoc
 // const date2YmdString = (d: Date): string => ((new Date(d.getTime() - (d.getTimezoneOffset() * 60 * 1000))).toISOString().split('T')[0])
 
 function addDays(d: Date, numDays: number): Date {
-  const res = new Date()
+  const res = new Date(d)
   res.setDate(d.getDate() + numDays)
 
   return res

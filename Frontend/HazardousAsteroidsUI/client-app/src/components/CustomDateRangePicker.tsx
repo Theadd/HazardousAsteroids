@@ -16,7 +16,6 @@ type DateRangeProps = CustomDateRange & {
   onChange: (nextValues: CustomDateRange) => void
 }
 
-
 class CustomDateRangePicker extends React.Component<DateRangeProps> {
   datePicker: any
 
@@ -39,10 +38,6 @@ class CustomDateRangePicker extends React.Component<DateRangeProps> {
 
   render() {
     const { startDate, endDate } = this.props
-
-    const otherProps = endDate != null ? {} : {
-      includeDateIntervals: [{ start: addDays(startDate, -1), end: addDays(startDate, 7) }]
-    }
 
     return (
       <>
@@ -83,7 +78,7 @@ class CustomDateRangePicker extends React.Component<DateRangeProps> {
                 },
               ]}
               ref={this.datePicker}
-              {...otherProps}
+              includeDateIntervals={ endDate != null ? undefined : [{ start: addDays(startDate, -1), end: addDays(startDate, 7) }] }
             />
             
           </div>
