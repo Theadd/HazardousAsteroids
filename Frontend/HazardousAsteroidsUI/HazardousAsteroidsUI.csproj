@@ -29,14 +29,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="client-app\src\components\AsteroidsTable.tsx" />
+    <None Remove="client-app\src\components\AsteroidsTableRow.tsx" />
     <None Remove="client-app\src\components\CustomDateRangePicker.tsx" />
     <None Remove="client-app\src\components\DateRangeInput.tsx" />
     <None Remove="client-app\src\components\index.ts" />
+    <None Remove="client-app\src\components\Pagination.tsx" />
+    <None Remove="client-app\src\components\ShowingNResultsPerPageDropdown.tsx" />
     <None Remove="client-app\src\components\SvgIcons.tsx" />
     <None Remove="client-app\src\components\TextInputWithButton.tsx" />
     <None Remove="client-app\src\lib\api-utils.ts" />
     <None Remove="client-app\src\lib\date-utils.ts" />
     <None Remove="client-app\src\pages\HazardousAsteroidsPage.tsx" />
+    <None Remove="client-app\src\pages\HazardousAsteroidsPage\AsteroidsTableView.tsx" />
     <None Remove="client-app\src\pages\HazardousAsteroidsPage\OrbitingBodyTextInput.tsx" />
     <None Remove="client-app\src\pages\HazardousAsteroidsPage\PageFilters.tsx" />
     <None Remove="client-app\src\pages\HazardousAsteroidsPage\types.ts" />
@@ -53,6 +58,12 @@
     <TypeScriptCompile Include="client-app\src\components\index.ts" />
     <TypeScriptCompile Include="client-app\src\lib\date-utils.ts" />
     <TypeScriptCompile Include="client-app\src\pages\HazardousAsteroidsPage\HazardousAsteroidsPage.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Update="client-app\src\components\AsteroidsTableRow.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
