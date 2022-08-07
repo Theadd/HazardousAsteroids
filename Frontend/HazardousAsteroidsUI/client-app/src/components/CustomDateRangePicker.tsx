@@ -54,7 +54,7 @@ class CustomDateRangePicker extends React.Component<DateRangeProps> {
         <div className='form-control w-full max-w-xs md:max-w-sm'>
           <div className='input-group'>
 
-            <span className='input input-bordered border-r-0 hidden sm:flex'><CalendarIconSvg /></span>
+            <span className='input bordered-dim border-r-0 hidden sm:flex'><CalendarIconSvg /></span>
             
             <DatePicker
               selected={startDate}
@@ -63,7 +63,7 @@ class CustomDateRangePicker extends React.Component<DateRangeProps> {
               endDate={endDate}
               selectsRange
               dateFormat={'PP'}
-              className='input hidden sm:flex input-bordered input-md w-52 hover:input-primary focus:outline-offset-[-2px] focus:input-primary'
+              className='input hidden sm:flex bordered-dim input-md w-52 hover:input-primary focus:outline-offset-[-2px] focus:input-primary'
               calendarStartDay={1}
               popperPlacement='bottom-start'
               popperModifiers={[

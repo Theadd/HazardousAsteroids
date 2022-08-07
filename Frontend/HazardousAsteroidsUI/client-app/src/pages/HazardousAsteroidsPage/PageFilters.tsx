@@ -51,8 +51,8 @@ const PageFilters = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className='navbar bg-base-100 sm:rounded-xl shadow-lg border-base-300 border-[1px]' data-theme='business'>
+    <form onSubmit={handleSubmit} className='lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto items-center'>
+      <div className='navbar bg-base-300 xl:rounded-xl xl:shadow-lg xl:border-[1px] bordered-dim'>
         <div className='justify-start flex-grow'>
           <CustomDateRangePicker startDate={filters.startDate} endDate={filters.endDate} onChange={onDateRangeChange} />
         </div>

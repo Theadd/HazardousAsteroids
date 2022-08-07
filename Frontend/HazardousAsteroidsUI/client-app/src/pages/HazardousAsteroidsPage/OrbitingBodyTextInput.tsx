@@ -9,7 +9,6 @@ type OrbitingBodyTextInputProps = {
 
 const OrbitingBodyTextInput = ({ value = '', onChange }: OrbitingBodyTextInputProps) => {
   const isValidValue = (value || '').trim().length > 0
-  const inputSize = isValidValue ? 'md' : 'sm'
 
   return (
     <>
@@ -23,11 +22,11 @@ const OrbitingBodyTextInput = ({ value = '', onChange }: OrbitingBodyTextInputPr
         }
         <div className='input-group'>
           {
-            isValidValue && <span className='input input-bordered border-r-0 hidden sm:flex'>Planet</span>
+            isValidValue && <span className='input bordered-dim border-r-0 hidden sm:flex'>Planet</span>
           }
           <input type='text' placeholder='Planet name...' value={value} onChange={onChange} 
-            className={ 'input input-bordered w-full focus:outline-offset-[-2px] focus:input-primary max-w-sm hover:input-primary input-' + inputSize } />
-          <button className={ 'btn btn-square btn-primary flex md:hidden btn-' + inputSize } title='Search' type='submit'>
+            className={ 'input bordered-dim w-full focus:outline-offset-[-2px] focus:input-primary max-w-sm hover:input-primary input-' + + (isValidValue ? 'input-md' : 'input-sm') } />
+          <button className={ 'btn btn-square btn-primary flex md:hidden ' + (isValidValue ? 'btn-md' : 'btn-sm') } title='Search' type='submit'>
             <SearchIconSvg className='h-4' />
           </button>
         </div>

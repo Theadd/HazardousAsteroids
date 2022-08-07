@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.bordered {
+    border-color: hsl(var(--bc) / var(--tw-border-opacity));
+    --tw-border-opacity: 0.2;
+}
+
+.bordered-dim {
+    --tw-border-opacity: 0.1;
+    border-color: hsl(var(--bc) / var(--tw-border-opacity));
+}
+
 .react-datepicker__week > .react-datepicker__day--selected {
     @apply btn btn-accent btn-xs
 }
