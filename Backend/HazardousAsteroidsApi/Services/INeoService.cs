@@ -6,5 +6,5 @@ public interface INeoService
 {
     string ApiUrl { get; set; }
     string ApiKey { get; set; }
-    Task<List<NearEarthObject>> GetAsync(DateTime startDate, DateTime endDate);
+    Task<IEnumerable<NearEarthObject>> GetAsync(DateTime startDate, DateTime endDate);
 }
