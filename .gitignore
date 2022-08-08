@@ -488,3 +488,4 @@ Directory.Build.props
 .vscode/
 
 package-lock.json
+/Frontend/HazardousAsteroidsUI/client-app/public/main.css
