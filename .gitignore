@@ -486,3 +486,5 @@ Directory.Build.props
 .idea/
 .vs/
 .vscode/
+
+package-lock.json
