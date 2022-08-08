@@ -1,6 +1,13 @@
 ﻿
 type CanBeReadAsDateTypes = Date | string | null | number
 
+const currentLocale = (new Intl.DateTimeFormat('default')).resolvedOptions().locale
+const localDateFormat: Intl.DateTimeFormat = new Intl.DateTimeFormat([currentLocale, 'en-US'], {
+  weekday: undefined, year: 'numeric', month: 'short', day: 'numeric'
+})
+
+const dateToCustomLocaleString = (d: CanBeReadAsDateTypes): string => localDateFormat.format(asDateType(d))
+
 const dateToYmdString = (d: CanBeReadAsDateTypes): string => asDateType(d).toLocaleDateString('en-CA')
 
 // same as above, ignore
@@ -31,4 +38,4 @@ const asDateType = (d: CanBeReadAsDateTypes): Date => {
   return (!isNaN((new Date(d || 0)).valueOf()) ? new Date(d || 0) : new Date(0))
 }
 
-export { addDays, dateToYmdString, isValidDate }
+export { addDays, dateToYmdString, isValidDate, dateToCustomLocaleString }
