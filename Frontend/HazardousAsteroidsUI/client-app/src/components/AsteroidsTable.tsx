@@ -9,15 +9,15 @@ export const AsteroidsTable = ({ children }: Props) => {
         <table className='table table-zebra w-full'>
           <thead>
             <tr>
-              <th></th>
+              <th className='hidden md:table-cell'></th>
               <th>Name</th>
               <th>Diameter</th>
               <th>Speed</th>
-              <th>Close Approach Date</th>
-              <th>Orbiting Body</th>
+              <th><span className='hidden md:flex'>Close Approach Date</span><span className='flex md:hidden'>Date</span></th>
+              <th className='hidden sm:table-cell'><span className='hidden md:flex'>Orbiting Body</span><span className='flex md:hidden'>Planet</span></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='text-xs md:text-base'>
             {children}
           </tbody>
         </table>

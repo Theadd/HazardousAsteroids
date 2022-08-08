@@ -1,16 +1,17 @@
-﻿import { dateToYmdString } from '../lib/date-utils'
+﻿import { dateToCustomLocaleString } from '../lib/date-utils'
 import { Asteroid } from '../pages/HazardousAsteroidsPage/types'
+import { DisplayGauge } from './DisplayGauge'
 
 const AsteroidTableRow = ({ name, diameter, speed, date, planet, rowNum }: Asteroid & { rowNum: number }) => {
 
   return (
     <tr className='hover'>
-      <th>{ rowNum + 1 }</th>
-      <td>{ name }</td>
-      <td>{ diameter }</td>
-      <td>{ speed }</td>
-      <td>{ dateToYmdString(date) }</td>
-      <td>{ planet }</td>
+      <th className='hidden md:table-cell'>{ rowNum + 1 }</th>
+      <td className='text-accent'>{ name }</td>
+      <td><DisplayGauge value={ diameter } symbol='Ø' units='km' /></td>
+      <td><DisplayGauge value={ speed } units='km/s' /></td>
+      <td>{ dateToCustomLocaleString(date) }</td>
+      <td className='hidden sm:table-cell'>{ planet }</td>
     </tr>
   )
 }
