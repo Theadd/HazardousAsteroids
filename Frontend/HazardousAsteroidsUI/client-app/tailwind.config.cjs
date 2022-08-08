@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
-  theme: {
-    extend: {},
-  },
   plugins: [
     require('@tailwindcss/typography'),
     require('daisyui'),
@@ -11,4 +8,7 @@ module.exports = {
       strategy: 'class',
     })
   ],
+  daisyui: {
+    themes: ['business', 'corporate', 'halloween', 'emerald', 'aqua', 'fantasy'],
+  },
 }
