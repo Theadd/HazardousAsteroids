@@ -2,8 +2,13 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders a visible search button', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const searchElements = screen.getAllByTitle(/search/i);
+  const searchButtons = Array.from(searchElements)
+    .filter(b => b instanceof HTMLButtonElement)
+  const lastSearchButton = searchButtons[searchButtons.length - 1]
+
+  expect(lastSearchButton).toBeInTheDocument();
+  expect(lastSearchButton).toBeVisible()
 });
