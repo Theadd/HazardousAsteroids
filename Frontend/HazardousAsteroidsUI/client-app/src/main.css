@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    min-width: 430px;
+}
+
 .bordered {
     border-color: hsl(var(--bc) / var(--tw-border-opacity));
     --tw-border-opacity: 0.2;
@@ -12,16 +16,38 @@
     border-color: hsl(var(--bc) / var(--tw-border-opacity));
 }
 
+.theme-color-drop {
+    position: relative;
+    width: 0;
+    height: 0;
+    top: -1.2em;
+    font-size: 1.15em;
+    left: 2px;
+}
+
+.theme-color-drop-small {
+    position: relative;
+    width: 0;
+    height: 0;
+    font-size: 0.75em;
+    left: 3px;
+    top: 3px;
+}
+
 .react-datepicker__week > .react-datepicker__day--selected {
     @apply btn btn-accent btn-xs
 }
 
 div.react-datepicker {
-    @apply bg-base-300 shadow-2xl border-base-300
+    @apply bg-base-300 shadow-2xl;
+    border-color: hsl(var(--bc) / var(--tw-border-opacity));
+    --tw-border-opacity: 0.2;
+    border-radius: 0 !important; /* temporarily disabled since border radius in datepicker is not well rendered in all themes */
 }
 
 .react-datepicker__month-container > .react-datepicker__header {
-    @apply bg-base-100 bg-opacity-100
+    @apply bg-base-100 bg-opacity-100;
+    border-radius: 0 !important; /* temporarily disabled since border radius in datepicker is not well rendered in all themes */
 }
 
 .react-datepicker__header > .react-datepicker__current-month {
@@ -82,9 +108,14 @@ div.react-datepicker {
 }
 
 .react-datepicker-popper[data-placement^=bottom] .react-datepicker > .react-datepicker__triangle::before {
-    @apply border-b-base-300
+    border-bottom-color: hsl(var(--bc) / var(--tw-border-opacity));
+    --tw-border-opacity: 0.2;
 }
 
 .react-datepicker-popper[data-placement^=bottom] .react-datepicker > .react-datepicker__triangle::after {
     @apply border-b-base-100
+}
+
+div.react-datepicker-popper {
+    z-index: 300;
 }

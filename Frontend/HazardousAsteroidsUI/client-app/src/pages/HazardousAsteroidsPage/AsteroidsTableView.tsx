@@ -1,4 +1,4 @@
-﻿import { Asteroid, AsteroidsApiRequest } from './types'
+﻿import { Asteroid } from './types'
 import { AsteroidsTable } from '../../components/AsteroidsTable'
 import { useAsteroidsApiStore } from '../../stores/AsteroidsApiStore'
 import { Pagination } from '../../components/Pagination'
