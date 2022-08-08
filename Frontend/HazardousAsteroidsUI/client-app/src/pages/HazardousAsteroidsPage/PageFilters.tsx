@@ -3,13 +3,8 @@ import { CustomDateRangePicker } from '../../components'
 import { addDays } from '../../lib/date-utils'
 import { useAsteroidsApiStore } from '../../stores/AsteroidsApiStore'
 import { OrbitingBodyTextInput } from './OrbitingBodyTextInput'
-import { AsteroidsApiRequest, DateRange } from './types'
+import { DateRange } from './types'
 
-
-type PageFiltersProps = AsteroidsApiRequest & {
-  onChange: (nextValues: AsteroidsApiRequest) => void
-  onSubmit: () => void
-}
 
 type CustomDateRange = DateRange & {
   startDate: Date
@@ -46,7 +41,8 @@ const PageFilters = () => {
   }
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    asteroidsStore.fetch(filters)
+    // Submit's the request and goes back to first page of results
+    asteroidsStore.fetch({ ...filters, pageIndex: 0 })
     e.preventDefault()
   }
 
@@ -58,7 +54,7 @@ const PageFilters = () => {
         </div>
 
         <div className='justify-end space-x-2 flex-grow max-w-sm'>
-          <OrbitingBodyTextInput value={filters.planet} onChange={onPlanetNameChange} />
+          <OrbitingBodyTextInput value={filters.planet} onChange={onPlanetNameChange} isLoading={ asteroidsStore.isFetching } />
         </div>
       </div>
     </form>
