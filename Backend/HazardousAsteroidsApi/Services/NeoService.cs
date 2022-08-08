@@ -1,15 +1,42 @@
 ﻿using Newtonsoft.Json.Linq;
 using HazardousAsteroidsApi.Model;
 using System.ComponentModel;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace HazardousAsteroidsApi.Services;
 
 public class NeoService : INeoService
 {
+    private static readonly int MAX_CACHE_SIZE = 256;
+
     public string ApiUrl { get; set; } = "https://api.nasa.gov/neo/rest/v1/";
     public string ApiKey { get; set; } = "zdUP8ElJv1cehFM0rsZVSQN7uBVxlDnu4diHlLSb";
 
-    public async Task<List<NearEarthObject>> GetAsync(DateTime startDate, DateTime endDate)
+    private static MemoryCache _cache { get; } = new MemoryCache(new MemoryCacheOptions() { SizeLimit = MAX_CACHE_SIZE });
+
+    private static string GetCacheKey(DateTime startDate, DateTime endDate) => $"{startDate.DayOfYear}-{startDate.Year}-{(endDate - startDate).Days}";
+
+    public async Task<IEnumerable<NearEarthObject>> GetAsync(DateTime startDate, DateTime endDate)
+    {
+        var cacheKey = GetCacheKey(startDate, endDate);
+
+        if (!_cache.TryGetValue(cacheKey, out IEnumerable<NearEarthObject> results))
+        {
+            results = await RequestAsync(startDate, endDate);
+            
+            _cache.Set(cacheKey, results, new MemoryCacheEntryOptions().SetSize(results.Count() + 1));
+            
+            // preserve only up to 4 most recently/frequently cached results
+            if (_cache.Count > 4)
+            {
+                _cache.Compact(.5);
+            }
+        }
+
+        return results;
+    }
+
+    private async Task<IEnumerable<NearEarthObject>> RequestAsync(DateTime startDate, DateTime endDate)
     {
         var results = new List<NearEarthObject>();
 
@@ -19,20 +46,24 @@ public class NeoService : INeoService
         {
             foreach (dynamic item in pd.GetValue(resultsByDate))
             {
-                results.Add(new NearEarthObject()
+                // filtering for potentially hazardous entries here to reduce cache impact
+                if (item.is_potentially_hazardous_asteroid == true)
                 {
-                    Name = item.name,
-                    IsPotentiallyHazardousAsteroid = item.is_potentially_hazardous_asteroid,
-                    EstimatedDiameterMax = item.estimated_diameter.kilometers.estimated_diameter_max,
-                    EstimatedDiameterMin = item.estimated_diameter.kilometers.estimated_diameter_min,
-                    CloseApproachDate = item.close_approach_data[0].close_approach_date,
-                    OrbitingBody = item.close_approach_data[0].orbiting_body,
-                    KilometersPerHour = item.close_approach_data[0].relative_velocity.kilometers_per_hour
-                });
+                    results.Add(new NearEarthObject()
+                    {
+                        Name = item.name,
+                        IsPotentiallyHazardousAsteroid = item.is_potentially_hazardous_asteroid,
+                        EstimatedDiameterMax = item.estimated_diameter.kilometers.estimated_diameter_max,
+                        EstimatedDiameterMin = item.estimated_diameter.kilometers.estimated_diameter_min,
+                        CloseApproachDate = item.close_approach_data[0].close_approach_date,
+                        OrbitingBody = item.close_approach_data[0].orbiting_body,
+                        KilometersPerHour = item.close_approach_data[0].relative_velocity.kilometers_per_hour
+                    });
+                }
             }
         }
 
-        return results;
+        return results.AsEnumerable();
     }
 
     private async Task<string> FetchNeoFeed(DateTime startDate, DateTime endDate)

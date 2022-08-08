@@ -52,7 +52,6 @@ public class AsteroidsController : ControllerBase
 
         var filteredItems = items == null ? Array.Empty<Asteroid>() : items.ToArray()
                 .Where(n => n.OrbitingBody == planet)
-                .Where(n => n.IsPotentiallyHazardousAsteroid == true)
                 .Select(n => (Asteroid)n)
                 .ToArray();
 
