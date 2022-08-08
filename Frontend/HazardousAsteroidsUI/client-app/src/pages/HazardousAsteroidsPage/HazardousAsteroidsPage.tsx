@@ -1,6 +1,7 @@
 ﻿import React from 'react'
 import { AsteroidsTableView } from './AsteroidsTableView'
 import { PageFilters } from './PageFilters'
+import { PageHeader } from './PageHeader'
 import { AsteroidsApiResponse, AsteroidsApiRequest } from './types'
 
 
@@ -12,9 +13,7 @@ export class HazardousAsteroidsPage extends React.Component<{} /*, HazardousAste
 
     return (
       <article>
-        <header className='prose w-[100vw] min-w-full bg-base-300 xl:bg-transparent pt-8 pb-4 md:pt-16 md:pb-8 px-0 sm:px-4 items-center text-[0.5rem] sm:text-xs md:text-base'>
-          <h1 className='text-center text-accent whitespace-nowrap w-[100vw]'>HAZARDOUS ASTEROIDS</h1>
-        </header>
+        <PageHeader />
         <aside className='w-full bg-base-300 xl:bg-transparent py-0 px-0 min-w-full xl:min-w-0 xl:max-w-5xl 2xl:max-w-6xl mx-0 xl:mx-auto items-center bordered border-b-[1px] input-bordered xl:border-b-0'>
           <PageFilters />
         </aside>
