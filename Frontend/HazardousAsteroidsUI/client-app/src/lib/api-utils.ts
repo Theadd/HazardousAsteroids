@@ -9,5 +9,5 @@ export const createAsteroidsUri = (request: AsteroidsApiRequest): string => {
     .map(([k, v]) => `${k}=${encodeURI(isValidDate(v) ? dateToYmdString(v) : v)}`)
     .join('&')
 
-  return query.length > 0 ? 'asteroids?' + query : 'asteroids'
+  return query.length > 0 ? 'api/asteroids?' + query : 'api/asteroids'
 }
