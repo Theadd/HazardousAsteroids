@@ -33,7 +33,7 @@ const useAsteroidsApiStore = create<AsteroidsApiStore>((set, get) => ({
 
   fetch: async (params: Partial<AsteroidsApiRequest>) => {
     if (get().isFetching) {
-      console.log("triggering abort signal...")
+
       controller.abort()
       controller = new AbortController()
     }
