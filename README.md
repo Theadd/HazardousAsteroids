@@ -1,52 +1,129 @@
-# Hazardous Asteroids
+# **HAZARDOUS ASTEROIDS**
 
-## Project Goals / Prerequisites
+## **REQUESTED PROJECT** <sub><sub> </sub></sub> 
 
-Create an `ASP.NET Core Web Application` composed of, at least, two separate projects inside a single `VS Solution`, a `ASP.NET Core Web API` within a `./Backend/` directory at the root of the solution and 
+### **PROJECT REQUIREMENTS** <sub><sub> </sub></sub> 
 
-## Project Structure / Tech Stack
+Create an `ASP.NET Core Web Application` composed of, at least, <mark>two separate projects</mark> inside a single `VS Solution`, a `ASP.NET Core Web API` within a `./Backend/` directory at the root of the solution and an `ASP.NET Core MVC Web App` within a `./Frontend` directory, with the following restrictions: <sub><sub> </sub></sub> 
 
-  - 
+<blockquote>
 
-## Requirements
+* Use some of the __technologies listed below__:<sub><sub> </sub></sub><sup><sup><sup> </sup></sup></sup>
+  * `.NET Core` / `.NET 5.0` / `.NET 6.0`, `ASP.NET Web API`
+  * `HTML5`, `CSS3`, `jQuery` / `Typescript` / `React`
+  * `xUnit` / `NUnit` / `MsTest`, `Moq`
+* Add __unit tests__.<sub><sub> </sub></sub><sup><sup><sup> </sup></sup></sup>
+* __SOLID Principles__ and __Clean Code__.<sub><sub> </sub></sub><sup><sup><sup> </sup></sup></sup>
+* Caring for __CSS styles__.<sub><sub> </sub></sub><sup><sup><sup> </sup></sup></sup>
+* __Responsive__ Web Design <sup><sub><var>(**BONUS**, **OPTIONAL**)</var></sub></sup> <sub><sub> </sub></sub><sup><sup><sup> </sup></sup></sup>
+<hr />
 
-* `Visual Studio 2022` w/ the `ASP.NET` workload installed
+* __Input filters__ <sup><sub><var>(**BONUS**, **OPTIONAL**)</var></sub></sup> _TLDR: Date range picker for up to 7 days max._<sub><sub> </sub></sub><sup><sup><sup> </sup></sup></sup>
+* __Pagination__ <sup><sub><var>(**BONUS**, **OPTIONAL**)</var></sub></sup> <sub><sub> </sub></sub><sup><sup><sup> </sup></sup></sup>
+
+</blockquote>
+
+<br/>
+
+## **RESULTING PROJECT** <sub><sub> </sub></sub> 
+
+### **PROJECTS IN THIS SOLUTION/REPO** <sub><sub> </sub></sub> 
+
+
+```py
+`HazardousAsteroids`
+ ├─ 'Backend'
+ │   ├─ HazardousAsteroidsApi  -> # C# ASP.NET Core Web API microservice (.NET 6)
+ │   │   
+ │   └─ HazardousAsteroidsApiTests  -> # Tests for the Web API project above.
+ │ 
+ └─ 'Frontend'
+     ├─ HazardousAsteroidsUI   -> # ** PROJECT EXCLUDED FROM THE SOLUTION**
+     │                            # Based on the ASP.NET Core with React.js
+     │                            # template and modified to add Typescript
+     │                            # support, being kept as it contains the 
+     │                            # unit tests of a react component as a
+     │                            # complete component test example. Can 
+     │                            # be used for fast UI development due to
+     │                            # instant hot-reloading on save.
+     │                               
+     └─ UI   -> # An ASP.NET Core Web App (MVC) project based on the ReactJS.NET
+                # `reactnet-webpack` (.NET Core 3.1) template being progressively 
+                # migrated to .NET 6.0 (i.e., optional migration steps to use the 
+                # new `minimal hosting model` are not done yet.) and some MVC's
+                # strengths/features are not being exploited yet, intentionally,
+                # in order to use previous TS/React UI implementation seamlessly.
+
+```
+
+<br/>
+
+### **FEATURES** <sub><sub> </sub></sub> 
+
+* __BACKEND__ <sub><sub> </sub></sub> 
+  * `// TODO`
+
+* __FRONTEND__ <sub><sub> </sub></sub> 
+  * `// TODO`
+
+
+
+<br/>
+
+## **GETTING STARTED**
+
+<sup><sup><sup> </sup></sup></sup>
+
+<br/>
+
+### **REQUIREMENTS** <sub><sub> </sub></sub> 
+
+* `Visual Studio 2022` w/ the `ASP.NET` workload installed <sup><sup><sup> </sup></sup></sup>
 
 * `Node.js >=16` ― *16.16.0 if possible*
 
 <br />
 
-## Installation
+### **INSTALL INSTRUCTIONS** <sub><sub> </sub></sub> 
 
 
-  1.  `git clone https://github.com/Theadd/HazardousAsteroids.git`
+* __Clone the repo:__ <sup><sup><sup> </sup></sup></sup>
 
-  2.  Open `HazardousAsteroids.sln` in VS 2022
+    ```bash
+    git clone https://github.com/Theadd/HazardousAsteroids.git
+    ```
 
-  3.  Go to menu: `Build` > `Build Solution`.  
-   <code>    *― This might take a few minutes ―*  </code>
+* __Open it and build solution:__ _― Same as `Build` > `Build Solution` in VS ―_
 
-  4.  Start using the multiple startup projects configuration by pressing <kbd>F5</kbd>
+    ```bash
+    cd HazardousAsteroids
+    dotnet build
+    ```
 
-  5.  In a command prompt, go to `./Frontend/HazardousAsteroidsUI/client-app/` and run `npm start`  
+* __In two separate terminals, run:__ _― Can also be done configuring `multiple startup projects` in VS or by `Start without debugging` the first one ―_
+
+    ```bash
+    dotnet run --project Backend/HazardousAsteroidsApi/
+    ```
+
+    ```bash
+    dotnet run --project Frontend/UI/
+    ```
+
+* __Open it in your browser:__
+
+    **[http://localhost:9457](http://localhost:9457)**
+
 
 <br />
 
-<blockquote>
+### **MISC: HOT RELOADING UI** <sub><sub> </sub></sub> 
 
-### **Why use the `npm start` workaround?**
+* __In a command prompt, go to `./Frontend/HazardousAsteroidsUI/client-app/` and run:__ <sup><sup><sup> </sup></sup></sup>
 
-<hr />
- 
-So far, **I was NOT able to find** a *neat* way to set up a `ASP.NET Core Web API` project and a `ASP.NET Core Web App` as two standalone projects within the same `VS Solution` **correctly configured** using `Typescript` and `React` in `.NET 6.0`. 
+    ```bash
+    npm install
+    npm start
+    ```
 
-Just by replacing `Typescript` by `Javascript` from the setup above, it could be done as described in this tutorial from the official docs.
-
-  [**Create an ASP.NET Core app with React in Visual Studio**](https://docs.microsoft.com/en-us/visualstudio/javascript/tutorial-asp-net-core-with-react?view=vs-2022)
-
-It could also be done with a **single project setup** for both the api backend and the web frontend or even in `.NET 5` but such setups are out of the goals of the project.
-
-**And while our setup is not being supported, step number <kbd>5.</kbd> of the Installation instructions from above serves as a workaround.**
-
-</blockquote>
 
