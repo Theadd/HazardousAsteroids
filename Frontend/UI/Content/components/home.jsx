@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import { CommentsBox } from './comments/Sample.jsx';
+import { CommentsBox } from './comments/Sample.tsx';
 import { StyledComponentsDemo } from './styled-components.jsx';
 import { EmotionDemo } from './emotion.jsx';
 import { ReactJssDemo } from './react-jss.jsx';

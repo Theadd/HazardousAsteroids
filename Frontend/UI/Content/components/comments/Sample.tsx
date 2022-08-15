@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 /**
  *  Copyright (c) 2014-Present, Facebook, Inc.
  *  All rights reserved.
@@ -7,11 +9,27 @@
  *  of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import * as Reactstrap from 'reactstrap';
+type AuthorProps = {
+	Name: string;
+	GithubUsername: string;
+};
 
-export function CommentsBox(props) {
+type CommentProps = {
+	Author: AuthorProps;
+	Text: string;
+};
+
+type CommentsBoxProps = {
+	initialComments: CommentProps[];
+	page: number;
+};
+
+/*type CommentRowProps = {
+	children: React.ReactNode;
+	author: AuthorProps;
+};*/
+
+function CommentsBox(props: CommentsBoxProps) {
 	let [state, updateState] = React.useState({
 		comments: props.initialComments,
 		page: props.page,
@@ -19,7 +37,7 @@ export function CommentsBox(props) {
 		loadingMore: false,
 	});
 
-	function loadMoreClicked(evt) {
+	function loadMoreClicked(evt: { preventDefault: () => void }) {
 		let nextPage = state.page + 1;
 		let comments = state.comments;
 		updateState(prevState => ({
@@ -46,8 +64,8 @@ export function CommentsBox(props) {
 		evt.preventDefault();
 	}
 
-	let commentNodes = state.comments.map(comment => (
-		<Comment author={comment.author}>{comment.text}</Comment>
+	let commentNodes = state.comments.map((comment: CommentProps) => (
+		<CommentRow author={comment.Author}>{comment.Text}</CommentRow>
 	));
 
 	function renderMoreLink() {
@@ -65,40 +83,16 @@ export function CommentsBox(props) {
 	}
 
 	return (
-		<div>
-			<p className="lead">
-				This is an example of ReactJS.NET's server-side rendering. The
-				initial state of this comments box is rendered server-side, and
-				additional data is loaded via AJAX and rendered client-side.
-			</p>
-			<div className="comments">
-				<h1>Comments</h1>
-				<ol className="commentList">{commentNodes}</ol>
-				{renderMoreLink()}
-				<hr />
-			</div>
+		<div className="comments">
+			<h1>Comments</h1>
+			<ol className="commentList">{commentNodes}</ol>
+			{renderMoreLink()}
+			<hr />
 		</div>
 	);
 }
 
-class Comment extends React.Component {
-	static propTypes = {
-		author: PropTypes.object.isRequired,
-	};
-
-	render() {
-		return (
-			<li>
-				<Avatar author={this.props.author} />
-				<strong>{this.props.author.name}</strong>
-				{': '}
-				{this.props.children}
-			</li>
-		);
-	}
-}
-
-class Avatar extends React.Component {
+class Avatar extends React.Component<{ author: AuthorProps }> {
 	static propTypes = {
 		author: PropTypes.object.isRequired,
 	};
@@ -107,7 +101,7 @@ class Avatar extends React.Component {
 		return (
 			<img
 				src={this.getPhotoUrl(this.props.author)}
-				alt={'Photo of ' + this.props.author.name}
+				alt={'Photo of ' + this.props.author.Name}
 				width={50}
 				height={50}
 				className="commentPhoto mr-1"
@@ -118,8 +112,26 @@ class Avatar extends React.Component {
 	getPhotoUrl = author => {
 		return (
 			'https://avatars.githubusercontent.com/' +
-			author.githubUsername +
+			author.GithubUsername +
 			'?s=50'
 		);
 	};
+}
+
+class CommentRow extends React.Component<{ author: AuthorProps, children: string }> {
+	static propTypes = {
+		author: PropTypes.object.isRequired,
+		children: PropTypes.string.isRequired
+	};
+
+	render() {
+		return (
+			<li>
+				<Avatar author={this.props.author} />
+				<strong>{this.props.author.Name}</strong>
+				{': '}
+				{this.props.children}
+			</li>
+		);
+	}
 }

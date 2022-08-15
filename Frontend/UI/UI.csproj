@@ -21,4 +21,8 @@
   <Target Name="ReactBuild" AfterTargets="Build">
     <Exec Command="npm i &amp;&amp; npm run build" />
   </Target>
+
+    <Target Name="Typecheck" AfterTargets="AfterBuild">
+	    <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Command="node_modules/.bin/tsc" />
+    </Target>
 </Project>
