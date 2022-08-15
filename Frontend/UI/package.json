@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build-tailwindcss": "npx tailwindcss -i ./Content/main.css -o ./wwwroot/main.css --minify",
-    "build": "rimraf wwwroot/dist && rimraf build && webpack"
+    "build": "npm run clean && npm run build-tailwindcss && webpack -p",
+    "clean": "rimraf wwwroot/dist && rimraf build && rimraf wwwroot/main.css"
   },
   "dependencies": {
     "abortcontroller-polyfill": "^1.7.3",
