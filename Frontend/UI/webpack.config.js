@@ -2,13 +2,16 @@ const path = require('path');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
-	entry: { 
+	entry: {
 		main: './Content/index.js',
 		vendor: [
 			'react',
 			'react-dom'
 		]
 	},
+	resolve: {
+        extensions: [".tsx", ".jsx", ".ts", ".js", ".d.ts"],
+    },
 	output: {
 		filename: '[name].js',
 		globalObject: 'this',
@@ -32,7 +35,7 @@ module.exports = {
 	},
 	module: {
 		rules: [
-      {
+			{
 				test: /\.tsx?$/,
 				exclude: /node_modules/,
 				loader: 'ts-loader',

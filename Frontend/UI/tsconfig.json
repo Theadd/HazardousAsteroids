@@ -1,18 +1,25 @@
 {
   "compilerOptions": {
     "noImplicitAny": false,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "target": "es6",
     "jsx": "react",
-    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "allowJs": false,
     "noEmit": false,
     "outDir": "./build",
     "types": [
       "./types"
     ],
     "lib": [
-      "es2015",
-      "dom"
+      "dom",
+      "dom.iterable",
+      "ESNext"
     ]
   },
   "include": [
