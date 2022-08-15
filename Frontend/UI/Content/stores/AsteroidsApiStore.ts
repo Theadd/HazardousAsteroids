@@ -9,7 +9,7 @@ export interface AsteroidsApiStore {
   fetch: (params: Partial<AsteroidsApiRequest>) => void
 }
 
-// let controller = new AbortController()
+let controller: any = null
 
 const useAsteroidsApiStore = create<AsteroidsApiStore>((set, get) => ({
   
@@ -24,17 +24,20 @@ const useAsteroidsApiStore = create<AsteroidsApiStore>((set, get) => ({
   },
 
   response: {
-    pageIndex: 0,
+    pageIndex: 0, 
     pageSize: 2,
     count: 0,
     data: []
   },
 
   fetch: async (params: Partial<AsteroidsApiRequest>) => {
+    if (controller == null)
+      controller = new AbortController()
+      
     if (get().isFetching) {
 
-      // controller.abort()
-      // controller = new AbortController()
+      controller.abort()
+      controller = new AbortController()
     }
     set({ isFetching: true })
 
@@ -42,7 +45,7 @@ const useAsteroidsApiStore = create<AsteroidsApiStore>((set, get) => ({
 
     try {
       const resource = await fetch(createAsteroidsUri(requestParams), {
-        // signal: controller.signal
+        signal: controller.signal
       })
 
       if (resource.status === 200) {
