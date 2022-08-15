@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "target": "es6",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "noEmit": false,
+    "outDir": "./build",
+    "types": [
+      "./types"
+    ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "ESNext"
+    ]
+  },
+  "include": [
+    "./Content/**/*"
+  ]
+}
