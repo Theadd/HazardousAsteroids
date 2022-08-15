@@ -1,4 +1,4 @@
-﻿import { GithubIconSvg } from '../../components/SvgIcons'
+﻿import { GithubIconSvg } from '../../components'
 import { SwitchThemeButton } from '../../components/SwitchThemeButton'
 
 const handleThemeChange = (theme: string): void => {

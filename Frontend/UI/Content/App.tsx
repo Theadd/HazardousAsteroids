@@ -1,12 +1,11 @@
 import React from 'react'
-import { PageHeader } from './pages/HazardousAsteroidsPage/PageHeader'
-
+import HazardousAsteroidsPage from './pages/HazardousAsteroidsPage/HazardousAsteroidsPage'
 
 function App() {
 
   return (
     <div>
-      <PageHeader />
+      <HazardousAsteroidsPage />
     </div>
   )
 }
