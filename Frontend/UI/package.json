@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf wwwroot/dist && webpack"
+    "build": "rimraf wwwroot/dist && webpack",
+    "start": "rimraf wwwroot/dist && webpack --watch"
   },
   "dependencies": {
     "emotion": "^9.2.12",
