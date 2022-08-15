@@ -2,7 +2,6 @@
 import { AsteroidsApiRequest, AsteroidsApiResponse } from '../pages/HazardousAsteroidsPage/types'
 import { createAsteroidsUri } from '../lib/api-utils'
 
-
 export interface AsteroidsApiStore {
   isFetching: boolean
   request: AsteroidsApiRequest
@@ -10,7 +9,7 @@ export interface AsteroidsApiStore {
   fetch: (params: Partial<AsteroidsApiRequest>) => void
 }
 
-let controller = new AbortController()
+let controller: any = null
 
 const useAsteroidsApiStore = create<AsteroidsApiStore>((set, get) => ({
   
@@ -21,17 +20,20 @@ const useAsteroidsApiStore = create<AsteroidsApiStore>((set, get) => ({
     endDate: null,
     planet: '',
     pageIndex: 0,
-    pageSize: 2
+    pageSize: 5
   },
 
   response: {
-    pageIndex: 0,
-    pageSize: 2,
+    pageIndex: 0, 
+    pageSize: 5,
     count: 0,
     data: []
   },
 
   fetch: async (params: Partial<AsteroidsApiRequest>) => {
+    if (controller == null)
+      controller = new AbortController()
+      
     if (get().isFetching) {
 
       controller.abort()

@@ -6,7 +6,7 @@ using System.Net;
 
 namespace HazardousAsteroidsApi.Controllers;
 
-[Route("[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 [Produces("application/json")]
 public class AsteroidsController : ControllerBase

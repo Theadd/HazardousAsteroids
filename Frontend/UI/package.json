@@ -1,0 +1,45 @@
+{
+  "name": "UI",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build-tailwindcss": "npx tailwindcss -i ./Content/main.css -o ./wwwroot/main.css --minify",
+    "build": "npm run clean && npm run build-tailwindcss && webpack -p",
+    "clean": "rimraf wwwroot/dist && rimraf build && rimraf wwwroot/main.css"
+  },
+  "dependencies": {
+    "abortcontroller-polyfill": "^1.7.3",
+    "react": "^16.8.2",
+    "react-datepicker": "^4.8.0",
+    "react-dom": "^16.8.2",
+    "zustand": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.8.7",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "7.8.3",
+    "@babel/preset-env": "7.8.7",
+    "@babel/preset-react": "7.8.3",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/typography": "^0.5.4",
+    "@types/node": "^16.11.48",
+    "@types/react": "^16.14.30",
+    "@types/react-datepicker": "^4.4.2",
+    "autoprefixer": "^10.4.8",
+    "babel-loader": "8.0.6",
+    "babel-preset-react": "^6.24.1",
+    "babel-runtime": "6.26.0",
+    "daisyui": "^2.24.0",
+    "postcss": "^8.4.16",
+    "rimraf": "3.0.2",
+    "tailwindcss": "^3.1.8",
+    "ts-loader": "^8.3.0",
+    "ts-node": "^10.9.1",
+    "typescript": "4.7.4",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.12",
+    "webpack-manifest-plugin": "2.2.0"
+  }
+}
