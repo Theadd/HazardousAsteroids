@@ -1,20 +1,21 @@
 {
-    "compilerOptions": {
-        "noImplicitAny": false,
-        "module": "commonjs",
-        "target": "es6",
-        "jsx": "react",
-        "esModuleInterop": true,
-        "noEmit": false,
-        "types": [
-            "./types"
-        ],
-        "lib": [
-            "es2015",
-            "dom"
-        ]
-    },
-    "include": [
-        "./Content/**/*"
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "noEmit": false,
+    "outDir": "./build",
+    "types": [
+      "./types"
+    ],
+    "lib": [
+      "es2015",
+      "dom"
     ]
+  },
+  "include": [
+    "./Content/**/*"
+  ]
 }
