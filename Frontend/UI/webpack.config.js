@@ -2,7 +2,13 @@ const path = require('path');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
-	entry: './Content/components/expose-components.js',
+	entry: { 
+		main: './Content/index.js',
+		vendor: [
+			'react',
+			'react-dom'
+		]
+	},
 	output: {
 		filename: '[name].js',
 		globalObject: 'this',

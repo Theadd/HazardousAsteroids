@@ -57,9 +57,7 @@ namespace UI
 
 			app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapControllerRoute("default", "{path?}", new { controller = "Home", action = "Index" });
-				endpoints.MapControllerRoute("comments-root", "comments", new { controller = "Home", action = "Index" });
-				endpoints.MapControllerRoute("comments", "comments/page-{page}", new { controller = "Home", action = "Comments" });
+				endpoints.MapControllerRoute("default", "{path?}", new { controller = "Main", action = "Index" });
 			});
 		}
 	}
