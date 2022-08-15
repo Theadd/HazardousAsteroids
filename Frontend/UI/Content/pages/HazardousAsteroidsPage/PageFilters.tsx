@@ -1,5 +1,4 @@
-﻿import React, { useState } from 'react'
-import { CustomDateRangePicker } from '../../components'
+﻿import React, { useState, useEffect } from 'react'
 import { addDays } from '../../lib/date-utils'
 import { useAsteroidsApiStore } from '../../stores/AsteroidsApiStore'
 import { OrbitingBodyTextInput } from './OrbitingBodyTextInput'
@@ -14,6 +13,10 @@ type StateTypes = CustomDateRange & {
   planet?: string
 }
 
+type LazyComponent = {
+  Component: any
+} | any
+
 const initialState: StateTypes = {
   startDate: new Date(),
   endDate: addDays(new Date(), 7),
@@ -21,7 +24,14 @@ const initialState: StateTypes = {
 }
 
 const PageFilters = () => {
-  const [ filters, setFilters ] = useState(initialState)
+  const [filters, setFilters] = useState(initialState)
+  const [lazyDateRangePicker, setLazyDateRangePicker] = useState<LazyComponent>()
+
+  useEffect(() => {
+    import('../../components/CustomDateRangePicker').then(component => {
+      setLazyDateRangePicker({ Component: component.default });
+    });
+  }, [])
 
   const asteroidsStore = useAsteroidsApiStore()
 
@@ -50,7 +60,10 @@ const PageFilters = () => {
     <form onSubmit={handleSubmit} className='lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto items-center'>
       <div className='navbar bg-base-300 xl:rounded-xl xl:shadow-lg xl:border-[1px] bordered-dim'>
         <div className='justify-start flex-grow'>
-          <CustomDateRangePicker startDate={filters.startDate} endDate={filters.endDate} onChange={onDateRangeChange} />
+          {lazyDateRangePicker && lazyDateRangePicker.Component ? (
+            <lazyDateRangePicker.Component startDate={filters.startDate} endDate={filters.endDate} onChange={onDateRangeChange} />
+          ): 'Loading' }
+          
         </div>
 
         <div className='justify-end space-x-2 flex-grow max-w-sm'>
