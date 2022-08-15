@@ -3,7 +3,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ReactDOMServer from "react-dom/server";
-// import { AbortController, abortableFetch } from 'abortcontroller-polyfill/dist/cjs-ponyfill';
 
 import App from './App'
 
@@ -12,8 +11,6 @@ global.React = React;
 global.ReactDOM = ReactDOM;
 global.ReactDOMServer = ReactDOMServer;
 global.globalThis = global;
-// global.AbortController = AbortController;
-// global.fetch = abortableFetch(fetch);
 
 // Components to expose
 global.App = App;

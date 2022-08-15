@@ -1,1 +1,7 @@
 ﻿export * from './SvgIcons'
+export * from './AsteroidsTable'
+export * from './AsteroidsTableRow'
+export * from './DisplayGauge'
+export * from './Pagination'
+export * from './ShowingNResultsPerPageDropdown'
+export * from './SwitchThemeButton'

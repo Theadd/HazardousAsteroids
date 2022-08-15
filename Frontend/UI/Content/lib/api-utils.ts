@@ -1,6 +1,7 @@
-﻿import { AsteroidsApiRequest, AsteroidsApiResponse } from "../pages/HazardousAsteroidsPage/types";
+﻿import { AsteroidsApiRequest } from "../pages/HazardousAsteroidsPage/types";
 import { dateToYmdString, isValidDate } from "./date-utils";
 
+const apiHostUrl = 'https://localhost:7052/'
 
 export const createAsteroidsUri = (request: AsteroidsApiRequest): string => {
   var query = '' + Object.entries(request)
@@ -9,5 +10,5 @@ export const createAsteroidsUri = (request: AsteroidsApiRequest): string => {
     .map(([k, v]) => `${k}=${encodeURI(isValidDate(v) ? dateToYmdString(v) : v)}`)
     .join('&')
 
-  return query.length > 0 ? 'api/asteroids?' + query : 'api/asteroids'
+  return apiHostUrl + (query.length > 0 ? 'api/asteroids?' + query : 'api/asteroids')
 }

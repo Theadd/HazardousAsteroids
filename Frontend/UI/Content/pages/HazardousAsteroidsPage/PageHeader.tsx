@@ -1,5 +1,4 @@
-﻿import { GithubIconSvg } from '../../components'
-import { SwitchThemeButton } from '../../components/SwitchThemeButton'
+﻿import { GithubIconSvg, SwitchThemeButton } from '../../components'
 
 const handleThemeChange = (theme: string): void => {
   document.body.parentElement!.dataset.theme = theme

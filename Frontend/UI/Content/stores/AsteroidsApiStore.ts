@@ -20,12 +20,12 @@ const useAsteroidsApiStore = create<AsteroidsApiStore>((set, get) => ({
     endDate: null,
     planet: '',
     pageIndex: 0,
-    pageSize: 2
+    pageSize: 5
   },
 
   response: {
     pageIndex: 0, 
-    pageSize: 2,
+    pageSize: 5,
     count: 0,
     data: []
   },

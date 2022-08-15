@@ -1,10 +1,6 @@
-﻿import { Asteroid } from './types'
-import { AsteroidsTable } from '../../components/AsteroidsTable'
+﻿import { AsteroidsTable, AsteroidTableRow, LoadingSpinnerIconSvg, Pagination, ShowingNResultsPerPageDropdown } from '../../components'
 import { useAsteroidsApiStore } from '../../stores/AsteroidsApiStore'
-import { Pagination } from '../../components/Pagination'
-import { AsteroidTableRow } from '../../components/AsteroidsTableRow'
-import { ShowingNResultsPerPageDropdown } from '../../components/ShowingNResultsPerPageDropdown'
-import { LoadingSpinnerIconSvg } from '../../components'
+import { Asteroid } from './types'
 
 
 const AsteroidsTableView = () => {

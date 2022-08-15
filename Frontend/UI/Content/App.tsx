@@ -5,7 +5,9 @@ function App() {
 
   return (
     <div>
-      <HazardousAsteroidsPage />
+      <React.StrictMode>
+        <HazardousAsteroidsPage />
+      </React.StrictMode>
     </div>
   )
 }
