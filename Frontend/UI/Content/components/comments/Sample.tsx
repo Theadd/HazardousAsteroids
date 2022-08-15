@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'reactstrap'
 /**
  *  Copyright (c) 2014-Present, Facebook, Inc.
  *  All rights reserved.
@@ -10,24 +11,19 @@ import PropTypes from 'prop-types'
  */
 
 type AuthorProps = {
-	Name: string;
-	GithubUsername: string;
+	name: string;
+	githubUsername: string;
 };
 
 type CommentProps = {
-	Author: AuthorProps;
-	Text: string;
+	author: AuthorProps;
+	text: string;
 };
 
 type CommentsBoxProps = {
 	initialComments: CommentProps[];
 	page: number;
 };
-
-/*type CommentRowProps = {
-	children: React.ReactNode;
-	author: AuthorProps;
-};*/
 
 function CommentsBox(props: CommentsBoxProps) {
 	let [state, updateState] = React.useState({
@@ -64,8 +60,8 @@ function CommentsBox(props: CommentsBoxProps) {
 		evt.preventDefault();
 	}
 
-	let commentNodes = state.comments.map((comment: CommentProps) => (
-		<CommentRow author={comment.Author}>{comment.Text}</CommentRow>
+	let commentNodes = state.comments.map((comment: CommentProps, i: number) => (
+		<CommentRow key={ '' + i } author={comment.author}>{comment.text}</CommentRow>
 	));
 
 	function renderMoreLink() {
@@ -73,9 +69,9 @@ function CommentsBox(props: CommentsBoxProps) {
 			return <em>Loading...</em>;
 		} else if (state.hasMore) {
 			return (
-				<Reactstrap.Button onClick={loadMoreClicked}>
+				<Button onClick={loadMoreClicked}>
 					Load More
-				</Reactstrap.Button>
+				</Button>
 			);
 		} else {
 			return <em>No more comments</em>;
@@ -101,7 +97,7 @@ class Avatar extends React.Component<{ author: AuthorProps }> {
 		return (
 			<img
 				src={this.getPhotoUrl(this.props.author)}
-				alt={'Photo of ' + this.props.author.Name}
+				alt={'Photo of ' + this.props.author.name}
 				width={50}
 				height={50}
 				className="commentPhoto mr-1"
@@ -112,7 +108,7 @@ class Avatar extends React.Component<{ author: AuthorProps }> {
 	getPhotoUrl = author => {
 		return (
 			'https://avatars.githubusercontent.com/' +
-			author.GithubUsername +
+			author.githubUsername +
 			'?s=50'
 		);
 	};
@@ -128,10 +124,12 @@ class CommentRow extends React.Component<{ author: AuthorProps, children: string
 		return (
 			<li>
 				<Avatar author={this.props.author} />
-				<strong>{this.props.author.Name}</strong>
+				<strong>{this.props.author.name}</strong>
 				{': '}
 				{this.props.children}
 			</li>
 		);
 	}
 }
+
+export { CommentsBox }
