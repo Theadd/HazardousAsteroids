@@ -487,7 +487,6 @@ Directory.Build.props
 .vs/
 .vscode/
 
-package-lock.json
 /Frontend/HazardousAsteroidsUI/client-app/public/main.css
 
 /Frontend/UI/wwwroot/main.css
