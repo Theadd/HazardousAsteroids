@@ -19,7 +19,7 @@ public class AsteroidsController : ControllerBase
     }
 
     /// <summary>
-    /// 
+    /// Returns a subset of potentially hazardous Near Earth Objects orbiting the specified planet, from NASA's public API between two given dates.
     /// </summary>
     /// <param name="planet">The name of the planet that the asteroids are oribing</param>
     /// <param name="startDate">The first date used to filter the results. Being the date where the asteroids are in closest range to the planet</param>
@@ -27,6 +27,16 @@ public class AsteroidsController : ControllerBase
     /// <param name="pageSize">Number of items per page</param>
     /// <param name="pageIndex">The zero-based page index</param>
     /// <returns>A paginated list of hazardous asteroids</returns>
+    /// 
+    /// <remarks>
+    /// Simple valid request:
+    /// 
+    ///     GET /api/asteroids
+    ///     {
+    ///         "planet": "Earth"
+    ///     }
+    /// 
+    /// </remarks>
     /// 
     /// <response code="200">Returns a paginated list of Asteroid objects</response>
     /// <response code="400">If parameter `planet` is not provided</response>

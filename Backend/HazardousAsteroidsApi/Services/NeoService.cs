@@ -5,7 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace HazardousAsteroidsApi.Services;
 
-public class NeoService : INeoService
+internal class NeoService : INeoService
 {
     private static readonly int MAX_CACHE_SIZE = 256;
 
